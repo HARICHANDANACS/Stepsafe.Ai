@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma/client"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model UserProfile {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  city          String?
+  latitude      Float?
+  longitude     Float?
+  ageGroup      String?  // child | adult | elderly
+  activityLevel String?  // low | medium | high
+  sessions      Session[]
+}
+
+model Session {
+  id         String      @id @default(cuid())
+  createdAt  DateTime    @default(now())
+  profile    UserProfile? @relation(fields: [profileId], references: [id])
+  profileId  String?
+  location   String?
+  aqi        Int?
+  uvIndex    Float?
+  temperatureC Float?
+  humidity   Int?
+  precipProb Int?
+  dataJson   Json?
+  resultJson Json?
+  advisory   Advisory?
+}
+
+model Advisory {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  text      String
+  session   Session  @relation(fields: [sessionId], references: [id])
+  sessionId String   @unique
+}

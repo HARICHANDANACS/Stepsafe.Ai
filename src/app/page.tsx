@@ -1,66 +1,37 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <section style={{ display: "grid", placeItems: "center", padding: "40px 0" }}>
+      <div style={{ textAlign: "center", maxWidth: 760 }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+          <span style={{ width: 36, height: 36, borderRadius: 18, background: "#d0f0eb" }} />
+          <span style={{ width: 36, height: 36, borderRadius: 18, background: "#d8f5ff" }} />
+          <span style={{ width: 36, height: 36, borderRadius: 18, background: "#eaf7f3" }} />
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <h1 style={{ fontSize: 48, lineHeight: 1.1, color: "#102a2a", marginBottom: 8 }}>
+          StepSafe AI
+        </h1>
+        <div style={{ color: "#0b6b57", fontWeight: 600, marginBottom: 10 }}>
+          Your Climate-Aware Safety Companion
         </div>
-      </main>
-    </div>
+        <p style={{ color: "#3a4a4a", fontSize: 18, marginBottom: 26 }}>
+          Personalized outdoor safety guidance based on real-time weather and air quality.
+          Clear, actionable recommendations before you step outside.
+        </p>
+        <Link
+          href="/input"
+          style={{
+            background: "#0b6b57",
+            color: "#fff",
+            padding: "14px 22px",
+            borderRadius: 10,
+            fontWeight: 700,
+          }}
+        >
+          Check Today’s Outdoor Safety
+        </Link>
+      </div>
+    </section>
   );
 }
